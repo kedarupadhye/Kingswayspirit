@@ -429,6 +429,163 @@
       font-size:14px;
       text-align:center;
     }
+    .hidden{display:none !important}
+    .brand-intro{
+      position:fixed;
+      inset:0;
+      z-index:9999;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:
+        radial-gradient(circle at center, rgba(200,169,106,0.12), transparent 35%),
+        linear-gradient(180deg, rgba(18,18,18,0.98), rgba(11,11,11,1));
+      transition:opacity 0.8s ease, visibility 0.8s ease;
+    }
+    .brand-intro.fade-out{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+    .brand-intro-inner{
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .brand-intro-logo{
+      width:min(220px, 52vw);
+      height:auto;
+      filter:drop-shadow(0 0 18px rgba(200,169,106,0.28));
+      animation:logoReveal 1.8s ease forwards, logoPulse 2.8s ease-in-out 1.8s infinite;
+      opacity:0;
+      transform:scale(0.92);
+    }
+    .brand-intro-line{
+      width:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(200,169,106,0.95), transparent);
+      margin-top:18px;
+      animation:lineExpand 1.2s ease 0.5s forwards;
+    }
+    .brand-intro-text{
+      margin-top:16px;
+      color:#d9bf8a;
+      text-transform:uppercase;
+      letter-spacing:0.55em;
+      font-size:12px;
+      opacity:0;
+      animation:textFade 1.2s ease 0.9s forwards;
+    }
+    .age-gate{
+      position:fixed;
+      inset:0;
+      z-index:9998;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:rgba(0,0,0,0.72);
+      backdrop-filter:blur(8px);
+    }
+    .age-gate-bg{
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at center, rgba(200,169,106,0.10), transparent 40%),
+        linear-gradient(180deg, rgba(11,11,11,0.78), rgba(11,11,11,0.95));
+    }
+    .age-gate-card{
+      position:relative;
+      z-index:2;
+      width:min(560px, 100%);
+      padding:42px 34px;
+      border-radius:34px;
+      border:1px solid rgba(200,169,106,0.22);
+      background:linear-gradient(180deg, rgba(25,25,25,0.92), rgba(10,10,10,0.96));
+      box-shadow:0 30px 90px rgba(0,0,0,0.45);
+      text-align:center;
+    }
+    .age-gate-logo{
+      height:92px;
+      width:auto;
+      margin:0 auto 22px;
+      filter:drop-shadow(0 0 18px rgba(200,169,106,0.22));
+    }
+    .age-gate-eyebrow{
+      color:#d9bf8a;
+      text-transform:uppercase;
+      letter-spacing:0.46em;
+      font-size:11px;
+      margin-bottom:14px;
+    }
+    .age-gate-card h2{
+      font-size:clamp(28px, 4vw, 40px);
+      line-height:1.2;
+      margin:0;
+    }
+    .age-gate-card p{
+      margin:18px auto 0;
+      max-width:460px;
+      color:rgba(246,241,231,0.72);
+      font-size:16px;
+      line-height:1.8;
+    }
+    .age-gate-actions{
+      display:flex;
+      gap:14px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+    .age-btn{
+      min-width:170px;
+      border-radius:999px;
+      padding:15px 22px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:0.22em;
+      cursor:pointer;
+      transition:transform 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+    }
+    .age-btn:hover{transform:translateY(-1px)}
+    .age-btn-primary{
+      background:var(--gold);
+      color:#000;
+      border:1px solid var(--gold);
+    }
+    .age-btn-secondary{
+      background:transparent;
+      color:var(--text);
+      border:1px solid rgba(255,255,255,0.16);
+    }
+    .age-btn-secondary:hover{
+      border-color:rgba(200,169,106,0.5);
+      color:#d9bf8a;
+    }
+    .age-gate-note{
+      margin-top:20px;
+      color:rgba(246,241,231,0.45);
+      font-size:12px;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+    }
+    @keyframes logoReveal{
+      0%{opacity:0; transform:scale(0.92)}
+      100%{opacity:1; transform:scale(1)}
+    }
+    @keyframes logoPulse{
+      0%,100%{filter:drop-shadow(0 0 14px rgba(200,169,106,0.20))}
+      50%{filter:drop-shadow(0 0 28px rgba(200,169,106,0.38))}
+    }
+    @keyframes lineExpand{
+      0%{width:0; opacity:0}
+      100%{width:220px; opacity:1}
+    }
+    @keyframes textFade{
+      0%{opacity:0; transform:translateY(6px)}
+      100%{opacity:1; transform:translateY(0)}
+    }
     @media (max-width: 960px){
       .hero-inner, .about-grid, .contact-grid{
         grid-template-columns:1fr;
@@ -733,11 +890,59 @@
     </div>
   </section>
 
+  <div id="brandIntro" class="brand-intro">
+    <div class="brand-intro-inner">
+      <img src="logo.png" alt="Kingsway Spirit logo" class="brand-intro-logo">
+      <div class="brand-intro-line"></div>
+      <div class="brand-intro-text">Kingsway Spirit</div>
+    </div>
+  </div>
+
+  <div id="ageGate" class="age-gate hidden">
+    <div class="age-gate-bg"></div>
+    <div class="age-gate-card">
+      <img src="logo.png" alt="Kingsway Spirit crest" class="age-gate-logo">
+      <div class="age-gate-eyebrow">Welcome to Kingsway Spirit</div>
+      <h2>Please confirm you are of legal drinking age in your country or region.</h2>
+      <p>
+        By entering this site, you confirm that you are legally permitted to view alcohol-related content
+        in your place of residence.
+      </p>
+      <div class="age-gate-actions">
+        <button class="age-btn age-btn-primary" onclick="enterSite(true)">Yes, I am</button>
+        <button class="age-btn age-btn-secondary" onclick="enterSite(false)">No</button>
+      </div>
+      <div class="age-gate-note">For responsible audiences only.</div>
+    </div>
+  </div>
+
   <footer>
     © 2026 Kingsway Spirit. Crafted in Europe. Curated for India.
   </footer>
 
   <script>
+    function initializeEntryExperience(){
+      const intro = document.getElementById('brandIntro');
+      const ageGate = document.getElementById('ageGate');
+      const ageVerified = localStorage.getItem('kingsway_age_verified');
+
+      setTimeout(() => {
+        intro.classList.add('fade-out');
+        if (!ageVerified) {
+          ageGate.classList.remove('hidden');
+        }
+      }, 2400);
+    }
+
+    function enterSite(allowed){
+      if (allowed) {
+        localStorage.setItem('kingsway_age_verified', 'true');
+        document.getElementById('ageGate').classList.add('hidden');
+      } else {
+        window.location.href = 'https://www.google.com';
+      }
+    }
+
     function sendMail(e){
       e.preventDefault();
       const name = document.getElementById('name').value;
@@ -756,6 +961,8 @@
       window.location.href =
         "mailto:support@kingswayspirit.com?subject=" + subject + "&body=" + body;
     }
+
+    window.addEventListener('load', initializeEntryExperience);
   </script>
 </body>
 </html>
