@@ -1,193 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingsway Spirit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --panel:#121212;
+      --text:#f6f1e7;
+      --muted:#c9c3b7;
+      --gold:#c8a96a;
+      --line:rgba(255,255,255,0.10);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    h1,h2,h3{
+      font-family:'Playfair Display',serif;
+      margin:0;
+      line-height:1.15;
+    }
+    a{text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{
+      width:min(1180px, calc(100% - 32px));
+      margin:0 auto;
+    }
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(11,11,11,0.92);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      padding:18px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+    .brand img{
+      height:44px;
+      width:auto;
+    }
+    .brand-text{
+      color:var(--gold);
+      font-weight:600;
+      letter-spacing:0.22em;
+      font-size:14px;
+      white-space:nowrap;
+    }
+    nav ul{
+      display:flex;
+      list-style:none;
+      gap:22px;
+      padding:0;
+      margin:0;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      color:rgba(246,241,231,0.72);
+      font-size:14px;
+    }
+    nav a:hover{color:var(--gold)}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 10%, rgba(200,169,106,0.14), transparent 45%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 30%);
+    }
+    .hero-inner{
+      min-height:82vh;
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:48px;
+      align-items:center;
+      padding:72px 0;
+    }
+    .eyebrow{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:0.38em;
+      font-size:12px;
+      margin-bottom:18px;
+    }
+    .hero h1{
+      font-size:clamp(40px, 7vw, 74px);
+      max-width:760px;
+    }
+    .hero p{
+      color:rgba(246,241,231,0.74);
+      font-size:18px;
+      max-width:650px;
+      margin:22px 0 0;
+    }
+    .cta-row{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:34px;
+    }
+    .btn{
+      display:inline-block;
+      padding:14px 24px;
+      border-radius:999px;
+      font-size:13px;
+      letter-spacing:0.22em;
+      text-transform:uppercase;
+      font-weight:600;
+    }
+    .btn-primary{
+      background:var(--gold);
+      color:#000;
+      border:1px solid var(--gold);
+    }
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.18);
+      color:var(--text);
+    }
+    .btn-secondary:hover{
+      border-color:var(--gold);
+      color:var(--gold);
+    }
+    .hero-card{
+      position:relative;
+      border:1px solid rgba(200,169,106,0.22);
+      background:rgba(255,255,255,0.03);
+      border-radius:32px;
+      padding:28px;
+      overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,0.35);
+    }
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at center, rgba(200,169,106,0.10), transparent 55%);
+      pointer-events:none;
+    }
+    .crest-watermark{
+      position:absolute;
+      left:50%;
+      top:57%;
+      transform:translate(-50%,-50%);
+      width:min(82%, 480px);
+      opacity:0.09;
+      filter:blur(1px);
+      pointer-events:none;
+    }
+    .logo-feature{
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+      gap:18px;
+      margin-bottom:24px;
+    }
+    .logo-feature img{
+      height:150px;
+      width:auto;
+      filter:drop-shadow(0 0 24px rgba(200,169,106,0.22));
+    }
+    .logo-feature span{
+      color:#d9bf8a;
+      text-transform:uppercase;
+      letter-spacing:0.48em;
+      font-size:11px;
+    }
+    .bottle-card{
+      position:relative;
+      z-index:2;
+      margin:0 auto;
+      width:min(320px, 100%);
+      min-height:460px;
+      border-radius:28px;
+      border:1px solid rgba(200,169,106,0.22);
+      background:linear-gradient(180deg,#171717 0%, #0f0f0f 100%);
+      padding:30px 26px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:flex-start;
+      text-align:center;
+      box-shadow:0 24px 60px rgba(0,0,0,0.42);
+    }
+    .bottle-mark{
+      width:62px;
+      height:62px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      font-family:'Playfair Display',serif;
+      font-size:34px;
+      color:#e0c892;
+      border:1px solid rgba(200,169,106,0.34);
+      background:rgba(200,169,106,0.08);
+    }
+    .bottle-label-1{
+      margin-top:28px;
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:0.48em;
+      font-size:11px;
+    }
+    .bottle-label-2{
+      font-family:'Playfair Display',serif;
+      font-size:48px;
+      margin-top:8px;
+      letter-spacing:0.14em;
+    }
+    .bottle-label-3{
+      margin-top:16px;
+      color:rgba(246,241,231,0.52);
+      text-transform:uppercase;
+      letter-spacing:0.32em;
+      font-size:12px;
+    }
+    .pill{
+      margin-top:72px;
+      border:1px solid rgba(200,169,106,0.30);
+      border-radius:999px;
+      padding:10px 16px;
+      font-size:11px;
+      letter-spacing:0.32em;
+      color:#d9bf8a;
+      text-transform:uppercase;
+    }
+    .bottle-footer{
+      margin-top:auto;
+      width:78%;
+      padding-top:18px;
+      border-top:1px solid rgba(200,169,106,0.20);
+      color:rgba(246,241,231,0.44);
+      text-transform:uppercase;
+      letter-spacing:0.28em;
+      font-size:10px;
+    }
+    section.content{
+      padding:88px 0;
+    }
+    .section-head{
+      max-width:860px;
+      margin-bottom:34px;
+    }
+    .section-head .eyebrow{
+      margin-bottom:14px;
+    }
+    .section-head h2{
+      font-size:clamp(32px, 4.2vw, 54px);
+    }
+    .section-head p{
+      margin-top:18px;
+      color:rgba(246,241,231,0.72);
+      font-size:18px;
+    }
+    .heritage-wrap{
+      overflow:hidden;
+      border-radius:34px;
+      border:1px solid rgba(200,169,106,0.18);
+      background:rgba(255,255,255,0.03);
+      box-shadow:0 24px 60px rgba(0,0,0,0.28);
+    }
+    .heritage-image{
+      position:relative;
+    }
+    .heritage-image img{
+      width:100%;
+      height:440px;
+      object-fit:cover;
+      object-position:top center;
+      opacity:0.82;
+    }
+    .heritage-image::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.78));
+    }
+    .heritage-caption{
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:2;
+      padding:32px;
+    }
+    .heritage-caption .small{
+      color:#d9bf8a;
+      text-transform:uppercase;
+      letter-spacing:0.42em;
+      font-size:11px;
+    }
+    .heritage-caption h3{
+      margin-top:10px;
+      font-size:32px;
+      max-width:760px;
+    }
+    .heritage-caption p{
+      margin-top:12px;
+      color:rgba(246,241,231,0.76);
+      max-width:700px;
+      font-size:17px;
+    }
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:34px;
+      padding:34px;
+    }
+    .about-copy p{
+      margin:0 0 18px;
+      color:rgba(246,241,231,0.74);
+      font-size:18px;
+    }
+    .cards-col{
+      display:grid;
+      gap:18px;
+    }
+    .card{
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.10);
+      border-radius:26px;
+      padding:26px;
+    }
+    .card.goldwash{
+      border-color:rgba(200,169,106,0.24);
+      background:linear-gradient(135deg, rgba(28,43,34,0.55), rgba(0,0,0,0.58));
+    }
+    .card .label{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:0.34em;
+      font-size:11px;
+    }
+    .card h3{
+      font-size:28px;
+      margin-top:12px;
+    }
+    .card p, .card li{
+      color:rgba(246,241,231,0.72);
+      margin-top:12px;
+      font-size:16px;
+    }
+    .portfolio-grid, .partners-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:22px;
+    }
+    .partners-grid{
+      grid-template-columns:repeat(3, minmax(0,1fr));
+    }
+    .contact-grid{
+      display:grid;
+      grid-template-columns:0.9fr 1.1fr;
+      gap:28px;
+    }
+    .info-stack{
+      display:grid;
+      gap:18px;
+    }
+    form{
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(200,169,106,0.20);
+      border-radius:30px;
+      padding:28px;
+    }
+    .field{
+      margin-bottom:14px;
+    }
+    .field label{
+      display:block;
+      margin-bottom:8px;
+      color:rgba(246,241,231,0.64);
+      text-transform:uppercase;
+      letter-spacing:0.24em;
+      font-size:11px;
+    }
+    .field input, .field textarea{
+      width:100%;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.10);
+      background:rgba(0,0,0,0.34);
+      color:var(--text);
+      padding:14px 16px;
+      font:inherit;
+      outline:none;
+    }
+    .field input:focus, .field textarea:focus{
+      border-color:var(--gold);
+    }
+    .submit{
+      width:100%;
+      border:0;
+      border-radius:999px;
+      background:var(--gold);
+      color:#000;
+      padding:16px 20px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:0.24em;
+      cursor:pointer;
+    }
+    footer{
+      border-top:1px solid var(--line);
+      padding:28px 0 36px;
+      color:rgba(246,241,231,0.52);
+      font-size:14px;
+      text-align:center;
+    }
+    @media (max-width: 960px){
+      .hero-inner, .about-grid, .contact-grid{
+        grid-template-columns:1fr;
+      }
+      .partners-grid{
+        grid-template-columns:1fr;
+      }
+      .portfolio-grid{
+        grid-template-columns:1fr;
+      }
+      .hero-inner{
+        min-height:auto;
+      }
+      .hero{
+        padding-top:0;
+      }
+    }
+    @media (max-width: 680px){
+      header{
+        position:static;
+      }
+      .nav{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+      nav ul{
+        gap:14px;
+        justify-content:flex-start;
+      }
+      .brand-text{
+        white-space:normal;
+      }
+      .heritage-caption{
+        padding:20px;
+      }
+      .heritage-caption h3{
+        font-size:24px;
+      }
+      .about-grid{
+        padding:22px;
+      }
+      .logo-feature img{
+        height:116px;
+      }
+      .hero h1{
+        font-size:42px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="logo.png" alt="Kingsway Spirit Logo">
+        <div class="brand-text">KINGSWAY SPIRIT</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#partners">Partners</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-import React, { useState } from "react";
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <div class="eyebrow">A Legacy Reimagined</div>
+        <h1>Curating Europe’s Finest Craft Spirits for India.</h1>
+        <p>
+          Kingsway Spirit is a premium import and brand-building company bringing exclusive
+          European craft spirits to India’s most discerning hospitality and retail partners.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Partner With Us</a>
+          <a class="btn btn-secondary" href="#about">Discover Our Story</a>
+        </div>
+      </div>
 
-export default function KingswaySpiritWebsite() {
-  const [formData, setFormData] = useState({
-    name: "",
-    business: "",
-    email: "",
-    message: "",
-  });
+      <div class="hero-card">
+        <img class="crest-watermark" src="logo.png" alt="">
+        <div class="logo-feature">
+          <img src="logo.png" alt="Kingsway Spirit Crest">
+          <span>Premium Craft Spirits</span>
+        </div>
+        <div class="bottle-card">
+          <div class="bottle-mark">K</div>
+          <div class="bottle-label-1">Kingsway</div>
+          <div class="bottle-label-2">GIN</div>
+          <div class="bottle-label-3">Small Batch • UK</div>
+          <div class="pill">Launching Diwali 2026</div>
+          <div class="bottle-footer">Crafted in Europe · Curated for India</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = event.target;
-    setFormData((current) => ({ ...current, [name]: value }));
-  };
+  <section id="about" class="content">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">About</div>
+        <h2>A family legacy, refined for a new era of craft spirits.</h2>
+        <p>
+          Kingsway Spirit brings together heritage, supply-chain vision, and premium market
+          curation for a new generation of hospitality and retail partners.
+        </p>
+      </div>
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const subject = encodeURIComponent(
-      `Kingsway Spirit Enquiry - ${formData.business}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nBusiness: ${formData.business}\nEmail: ${formData.email}\n\n${formData.message}`
-    );
-
-    window.location.href = `mailto:support@kingswayspirit.com?subject=${subject}&body=${body}`;
-  };
-
-  const sectionStyle = "mx-auto max-w-6xl px-6 py-20";
-  const cardStyle =
-    "rounded-[20px] border border-white/10 bg-white/[0.03] p-6 transition duration-300 hover:-translate-y-1 hover:border-[#c8a96a]";
-
-  return (
-    <div className="min-h-screen bg-[#0b0b0b] text-[#f6f1e7]" style={{ fontFamily: "Inter, sans-serif" }}>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
-        .display-font { font-family: 'Playfair Display', serif; }
-      `}</style>
-
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0b0b0b]/90 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5">
-          <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="Kingsway Spirit logo" className="h-10 w-auto" />
-            <div>
-              <div className="text-sm tracking-[0.35em] text-[#c8a96a]">KINGSWAY SPIRIT</div>
-            </div>
+      <div class="heritage-wrap">
+        <div class="heritage-image">
+          <img src="heritage.jpg" alt="Founding family heritage photograph">
+          <div class="heritage-caption">
+            <div class="small">Heritage Archive</div>
+            <h3>A family history rooted in commerce, trust, and the spirit trade.</h3>
+            <p>
+              This photograph reflects the wider family legacy from which Kingsway Spirit draws
+              its sense of heritage, resilience, and long-term vision.
+            </p>
           </div>
-          <nav className="flex flex-wrap gap-5 text-sm text-white/70">
-            <a href="#about" className="hover:text-[#c8a96a]">About</a>
-            <a href="#portfolio" className="hover:text-[#c8a96a]">Portfolio</a>
-            <a href="#partners" className="hover:text-[#c8a96a]">Partners</a>
-            <a href="#contact" className="hover:text-[#c8a96a]">Contact</a>
-          </nav>
         </div>
-      </header>
 
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,169,106,0.16),transparent_55%)]" />
-        <div className="relative mx-auto max-w-6xl px-6 py-24 text-center">
-          <img
-            src="/logo.png"
-            alt="Kingsway Spirit crest"
-            className="mx-auto h-32 w-auto opacity-95 drop-shadow-[0_0_25px_rgba(200,169,106,0.35)] md:h-40"
-          />
-          <h1 className="display-font mt-8 text-5xl leading-tight md:text-7xl">
-            Curating Europe’s Finest Craft Spirits for India
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg text-white/70">
-            A legacy reimagined for premium hospitality, luxury retail, and discerning trade partners.
-          </p>
-          <a
-            href="#contact"
-            className="mt-8 inline-block rounded-full bg-[#c8a96a] px-8 py-4 text-sm font-semibold uppercase tracking-[0.25em] text-black"
-          >
-            Partner With Us
-          </a>
-        </div>
-      </section>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>
+              In the early 20th century, before formal banking reached many rural communities,
+              the founding family played an important role in supporting cottage liquor manufacturing
+              in the village of Nepti, Maharashtra.
+            </p>
+            <p>
+              That legacy was built not only on trade, but on relationships, local trust, and an
+              understanding of how enterprise could sustain communities. It was a quiet yet meaningful
+              place within the regional economy of its time.
+            </p>
+            <p>
+              The present founders come through the daughters’ lineage and inherited no formal share
+              of that original business. Yet the instinct to build, connect, and create commercial
+              pathways around craftsmanship endured across generations.
+            </p>
+            <p>
+              Kingsway Spirit reimagines that inheritance for a global market: developing modern supply
+              chains for exceptional European craft liquor and introducing them to high-growth markets
+              with care, discipline, and premium brand positioning.
+            </p>
+          </div>
 
-      <section id="about" className={sectionStyle}>
-        <p className="text-sm uppercase tracking-[0.4em] text-[#c8a96a]">Our Heritage</p>
-        <h2 className="display-font mt-4 text-4xl md:text-5xl">
-          From Nepti to a new global spirits vision.
-        </h2>
-        <div className="mt-10 overflow-hidden rounded-[24px] border border-white/10">
-          <div className="relative">
-            <img
-              src="/heritage.jpg"
-              alt="Family heritage photograph"
-              className="h-[420px] w-full object-cover opacity-80"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0b0b0b]" />
-            <div className="absolute bottom-0 left-0 p-8">
-              <p className="text-xs uppercase tracking-[0.45em] text-[#d9bf8a]">Heritage Archive</p>
-              <p className="mt-3 max-w-2xl text-white/75">
-                A family story rooted in trade, trust, and enterprise—now reinterpreted for a premium international market.
+          <div class="cards-col">
+            <div class="card goldwash">
+              <div class="label">Legacy</div>
+              <h3>From Nepti to international markets.</h3>
+              <p>
+                A heritage story transformed into a contemporary platform for premium craft spirits.
               </p>
             </div>
+            <div class="card">
+              <div class="label">Mission</div>
+              <p>
+                Connect exceptional European craftsmanship with ambitious hospitality and retail
+                markets in India and beyond.
+              </p>
+            </div>
+            <div class="card">
+              <div class="label">Values</div>
+              <p>Provenance. Trust. Craftsmanship. Premium presentation. Market discipline.</p>
+            </div>
           </div>
         </div>
-        <p className="mt-8 max-w-4xl text-lg leading-8 text-white/75">
-          Kingsway Spirit draws from a legacy rooted in Nepti, Maharashtra, where early 20th century trade supported local liquor craftsmanship. Today, that heritage is transformed into a modern platform connecting European craft distilleries with India’s premium hospitality and retail markets.
-        </p>
-      </section>
-
-      <section id="portfolio" className={sectionStyle}>
-        <p className="text-sm uppercase tracking-[0.4em] text-[#c8a96a]">Portfolio</p>
-        <h2 className="display-font mt-4 text-4xl md:text-5xl">An exclusive opening release.</h2>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          <div className={cardStyle}>
-            <h3 className="display-font text-2xl">UK Craft Gin</h3>
-            <p className="mt-3 text-white/70">Launching in Maharashtra during Diwali 2026.</p>
-          </div>
-          <div className={cardStyle}>
-            <h3 className="display-font text-2xl">Future Portfolio</h3>
-            <p className="mt-3 text-white/70">Curated European spirits expanding across global growth markets.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="partners" className={sectionStyle}>
-        <p className="text-sm uppercase tracking-[0.4em] text-[#c8a96a]">Partners</p>
-        <h2 className="display-font mt-4 text-4xl md:text-5xl">Built for premium hospitality and retail.</h2>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          <div className={cardStyle}>Luxury Hotels & Resorts</div>
-          <div className={cardStyle}>Cocktail Bars & Restaurants</div>
-          <div className={cardStyle}>Premium Retail Stores</div>
-        </div>
-      </section>
-
-      <section id="contact" className={sectionStyle}>
-        <p className="text-sm uppercase tracking-[0.4em] text-[#c8a96a]">Contact</p>
-        <h2 className="display-font mt-4 text-4xl md:text-5xl">Trade enquiries and launch partnerships.</h2>
-        <div className="mt-10 grid gap-10 md:grid-cols-2">
-          <div className="space-y-4 text-white/75">
-            <p>Email: support@kingswayspirit.com</p>
-            <p>Location: Maharashtra, India</p>
-            <p>Launch Window: Diwali 2026</p>
-          </div>
-          <form onSubmit={handleSubmit} className="space-y-4 rounded-[24px] border border-white/10 bg-white/[0.03] p-6">
-            <input
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Name"
-              className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none"
-              required
-            />
-            <input
-              name="business"
-              value={formData.business}
-              onChange={handleChange}
-              placeholder="Business"
-              className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email"
-              className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none"
-              required
-            />
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Message"
-              rows={5}
-              className="w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3 text-white outline-none"
-              required
-            />
-            <button
-              type="submit"
-              className="w-full rounded-full bg-[#c8a96a] px-6 py-4 text-sm font-semibold uppercase tracking-[0.25em] text-black"
-            >
-              Send Enquiry
-            </button>
-          </form>
-        </div>
-      </section>
-
-      <footer className="border-t border-white/10 px-6 py-10 text-center text-sm text-white/50">
-        © 2026 Kingsway Spirit — Crafted in Europe. Curated for India.
-      </footer>
+      </div>
     </div>
-  );
-}
+  </section>
+
+  <section id="portfolio" class="content">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Portfolio</div>
+        <h2>Launching with a premium UK craft gin.</h2>
+        <p>
+          Our first release introduces a distinctive European spirit to India with careful brand
+          positioning, selective distribution, and a premium hospitality-led rollout.
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="card">
+          <div class="label">Origin</div>
+          <h3>Crafted in the UK</h3>
+          <p>
+            Selected for provenance, quality, premium shelf appeal, and relevance for India’s
+            evolving gin audience.
+          </p>
+        </div>
+        <div class="card">
+          <div class="label">Market</div>
+          <h3>Maharashtra First</h3>
+          <p>
+            Launching with focused distribution in a high-potential market before broader expansion.
+          </p>
+        </div>
+        <div class="card">
+          <div class="label">Channel Strategy</div>
+          <h3>On-Trade + Premium Retail</h3>
+          <p>
+            Built for luxury bars, top hotels, premium restaurants, and curated retail placement.
+          </p>
+        </div>
+        <div class="card">
+          <div class="label">Growth</div>
+          <h3>Future European Portfolio</h3>
+          <p>
+            A foundation for a broader curated spirits portfolio across global growth markets.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="partners" class="content">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Partners</div>
+        <h2>Built for premium hospitality and high-end retail.</h2>
+        <p>
+          Kingsway Spirit works with partners who value product story, provenance, guest experience,
+          and long-term brand equity.
+        </p>
+      </div>
+
+      <div class="partners-grid">
+        <div class="card">
+          <h3>Hotels & Resorts</h3>
+          <p>
+            Support luxury beverage menus with differentiated imported craft spirits and elevated storytelling.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Cocktail Bars</h3>
+          <p>
+            Give bartenders and beverage managers a spirit that combines exclusivity, craft provenance,
+            and premium presentation.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Premium Retail</h3>
+          <p>
+            Offer customers a refined imported brand with a strong origin narrative and luxury visual appeal.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="content">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Contact</div>
+        <h2>Trade enquiries and launch partnerships.</h2>
+        <p>
+          Connect with Kingsway Spirit to discuss listings, hospitality partnerships, distribution
+          opportunities, and premium retail placements.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="info-stack">
+          <div class="card">
+            <div class="label">Email</div>
+            <p>support@kingswayspirit.com</p>
+          </div>
+          <div class="card">
+            <div class="label">Location</div>
+            <p>Maharashtra, India</p>
+          </div>
+          <div class="card">
+            <div class="label">Launch Window</div>
+            <p>Diwali 2026</p>
+          </div>
+        </div>
+
+        <form onsubmit="sendMail(event)">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label for="business">Business</label>
+            <input id="business" type="text" placeholder="Hotel, bar, restaurant or retail" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" rows="6" placeholder="Tell us about your enquiry" required></textarea>
+          </div>
+          <button class="submit" type="submit">Send Enquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Kingsway Spirit. Crafted in Europe. Curated for India.
+  </footer>
+
+  <script>
+    function sendMail(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const business = document.getElementById('business').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      const subject = encodeURIComponent("Kingsway Spirit Enquiry - " + business);
+      const body = encodeURIComponent(
+        "Name: " + name + "\n" +
+        "Business: " + business + "\n" +
+        "Email: " + email + "\n\n" +
+        "Enquiry:\n" + message
+      );
+
+      window.location.href =
+        "mailto:support@kingswayspirit.com?subject=" + subject + "&body=" + body;
+    }
+  </script>
+</body>
+</html>
