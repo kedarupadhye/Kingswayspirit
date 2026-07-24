@@ -30,59 +30,57 @@ footer{padding:34px 0;color:rgba(246,241,231,.48);text-align:center;font-size:14
     .venue-image-grid{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:20px;
+      gap:22px;
       margin-top:34px;
+      align-items:start;
     }
 
     .venue-image-card{
-      position:relative;
-      min-height:460px;
       overflow:hidden;
       border-radius:26px;
       border:1px solid rgba(200,169,106,.25);
-      background:#090909;
+      background:#0b0b0b;
       box-shadow:0 24px 70px rgba(0,0,0,.4);
+      transition:transform .35s ease,border-color .35s ease;
+    }
+
+    .venue-image-card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(200,169,106,.48);
+    }
+
+    .venue-image-frame{
+      width:100%;
+      aspect-ratio:16 / 10;
+      overflow:hidden;
+      background:#050505;
+      border-bottom:1px solid rgba(200,169,106,.18);
     }
 
     .venue-image-card img{
       width:100%;
       height:100%;
-      min-height:460px;
       display:block;
-      object-fit:cover;
-      transition:transform .7s ease;
-    }
-
-    .venue-image-card:hover img{
-      transform:scale(1.035);
-    }
-
-    .venue-image-card::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg,transparent 42%,rgba(0,0,0,.28) 63%,rgba(0,0,0,.96));
-      pointer-events:none;
+      object-fit:contain;
+      object-position:center;
+      background:#050505;
     }
 
     .venue-image-copy{
-      position:absolute;
-      z-index:2;
-      left:0;
-      right:0;
-      bottom:0;
-      padding:28px;
+      position:static;
+      padding:24px 24px 28px;
+      background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.01));
     }
 
     .venue-image-copy h3{
-      margin:8px 0 8px;
+      margin:8px 0 10px;
       font-size:28px;
     }
 
     .venue-image-copy p{
       margin:0;
-      color:rgba(246,241,231,.72);
-      line-height:1.65;
+      color:rgba(246,241,231,.70);
+      line-height:1.7;
     }
 
     .illustration-note{
@@ -93,10 +91,17 @@ footer{padding:34px 0;color:rgba(246,241,231,.48);text-align:center;font-size:14
       text-align:center;
     }
 
-    @media(max-width:960px){
-      .venue-image-grid{grid-template-columns:1fr}
-      .venue-image-card,
-      .venue-image-card img{min-height:420px}
+    @media(max-width:1100px){
+      .venue-image-grid{
+        grid-template-columns:1fr;
+        max-width:900px;
+        margin-left:auto;
+        margin-right:auto;
+      }
+
+      .venue-image-frame{
+        aspect-ratio:16 / 9;
+      }
     }
 
   </style>
@@ -540,10 +545,12 @@ footer{padding:34px 0;color:rgba(246,241,231,.48);text-align:center;font-size:14
 
         <div class="venue-image-grid">
           <article class="venue-image-card">
-            <img
-              src="/images/blenheim-landmark.webp"
-              alt="Artistic representation of a grand British heritage palace and formal gardens"
-              loading="lazy">
+            <div class="venue-image-frame">
+              <img
+                src="/images/blenheim-landmark.webp"
+                alt="Artistic representation of a grand British heritage palace and formal gardens"
+                loading="lazy">
+            </div>
             <div class="venue-image-copy">
               <div class="label">Blenheim Palace</div>
               <h3>British heritage</h3>
@@ -555,10 +562,12 @@ footer{padding:34px 0;color:rgba(246,241,231,.48);text-align:center;font-size:14
           </article>
 
           <article class="venue-image-card">
-            <img
-              src="/images/bodleian-library.webp"
-              alt="Artistic representation inspired by Oxford's historic library architecture"
-              loading="lazy">
+            <div class="venue-image-frame">
+              <img
+                src="/images/bodleian-library.webp"
+                alt="Artistic representation inspired by Oxford's historic library architecture"
+                loading="lazy">
+            </div>
             <div class="venue-image-copy">
               <div class="label">Bodleian Library</div>
               <h3>University of Oxford</h3>
@@ -570,10 +579,12 @@ footer{padding:34px 0;color:rgba(246,241,231,.48);text-align:center;font-size:14
           </article>
 
           <article class="venue-image-card">
-            <img
-              src="/images/waddesdon-manor.webp"
-              alt="Artistic representation inspired by Waddesdon Manor and its formal gardens"
-              loading="lazy">
+            <div class="venue-image-frame">
+              <img
+                src="/images/waddesdon-manor.webp"
+                alt="Artistic representation inspired by Waddesdon Manor and its formal gardens"
+                loading="lazy">
+            </div>
             <div class="venue-image-copy">
               <div class="label">Waddesdon Manor</div>
               <h3>Rothschild heritage</h3>
