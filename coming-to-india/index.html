@@ -26,7 +26,80 @@ footer{padding:34px 0;color:rgba(246,241,231,.48);text-align:center;font-size:14
 @keyframes cinemaDrift{from{transform:scale(1.08) translateX(-1%)}to{transform:scale(1.14) translateX(1%)}}@keyframes shine{0%,55%{transform:translateX(-120%);opacity:0}65%{opacity:1}100%{transform:translateX(120%);opacity:0}}@keyframes lineGrow{to{width:min(480px,80vw)}}@keyframes pulse{0%,100%{opacity:.45}50%{opacity:1}}@keyframes logoReveal{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
 @media(max-width:960px){.hero-inner,.grid,.grid-2,.route-grid{grid-template-columns:1fr}.counter-grid{grid-template-columns:repeat(2,1fr)}.route-line{display:none}.nav{align-items:flex-start;flex-direction:column}}@media(max-width:560px){.counter-grid{grid-template-columns:1fr}nav ul{gap:12px}.hero h1{font-size:42px}}
 
-</style>
+
+    .venue-image-grid{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:20px;
+      margin-top:34px;
+    }
+
+    .venue-image-card{
+      position:relative;
+      min-height:460px;
+      overflow:hidden;
+      border-radius:26px;
+      border:1px solid rgba(200,169,106,.25);
+      background:#090909;
+      box-shadow:0 24px 70px rgba(0,0,0,.4);
+    }
+
+    .venue-image-card img{
+      width:100%;
+      height:100%;
+      min-height:460px;
+      display:block;
+      object-fit:cover;
+      transition:transform .7s ease;
+    }
+
+    .venue-image-card:hover img{
+      transform:scale(1.035);
+    }
+
+    .venue-image-card::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg,transparent 42%,rgba(0,0,0,.28) 63%,rgba(0,0,0,.96));
+      pointer-events:none;
+    }
+
+    .venue-image-copy{
+      position:absolute;
+      z-index:2;
+      left:0;
+      right:0;
+      bottom:0;
+      padding:28px;
+    }
+
+    .venue-image-copy h3{
+      margin:8px 0 8px;
+      font-size:28px;
+    }
+
+    .venue-image-copy p{
+      margin:0;
+      color:rgba(246,241,231,.72);
+      line-height:1.65;
+    }
+
+    .illustration-note{
+      margin-top:20px;
+      color:rgba(246,241,231,.45);
+      font-size:11px;
+      letter-spacing:.08em;
+      text-align:center;
+    }
+
+    @media(max-width:960px){
+      .venue-image-grid{grid-template-columns:1fr}
+      .venue-image-card,
+      .venue-image-card img{min-height:420px}
+    }
+
+  </style>
 
   <style>
     .preview-hero{
@@ -465,33 +538,55 @@ footer{padding:34px 0;color:rgba(246,241,231,.48);text-align:center;font-size:14
         <div class="eyebrow">Prestigious Landmark Venues</div>
         <h2>Associated with British heritage and internationally recognised destinations.</h2>
 
-        <div class="landmark-grid">
-          <div class="landmark-card">
-            <div class="label">Blenheim Palace</div>
-            <h3>British heritage</h3>
-            <p>
-              UNESCO World Heritage Site, birthplace of Sir Winston Churchill
-              and an internationally recognised visitor destination.
-            </p>
-          </div>
+        <div class="venue-image-grid">
+          <article class="venue-image-card">
+            <img
+              src="/images/blenheim-landmark.webp"
+              alt="Artistic representation of a grand British heritage palace and formal gardens"
+              loading="lazy">
+            <div class="venue-image-copy">
+              <div class="label">Blenheim Palace</div>
+              <h3>British heritage</h3>
+              <p>
+                UNESCO World Heritage Site, birthplace of Sir Winston Churchill
+                and an internationally recognised visitor destination.
+              </p>
+            </div>
+          </article>
 
-          <div class="landmark-card">
-            <div class="label">Bodleian Library</div>
-            <h3>University of Oxford</h3>
-            <p>
-              One of Oxford’s internationally recognised institutions and a
-              landmark associated with scholarship and British cultural heritage.
-            </p>
-          </div>
+          <article class="venue-image-card">
+            <img
+              src="/images/bodleian-library.webp"
+              alt="Artistic representation inspired by Oxford's historic library architecture"
+              loading="lazy">
+            <div class="venue-image-copy">
+              <div class="label">Bodleian Library</div>
+              <h3>University of Oxford</h3>
+              <p>
+                An internationally recognised institution associated with
+                scholarship, history and British cultural heritage.
+              </p>
+            </div>
+          </article>
 
-          <div class="landmark-card">
-            <div class="label">Waddesdon Manor</div>
-            <h3>National Trust property</h3>
-            <p>
-              A prestigious property built by Baron Ferdinand de Rothschild,
-              reinforcing an association with heritage and refined hospitality.
-            </p>
-          </div>
+          <article class="venue-image-card">
+            <img
+              src="/images/waddesdon-manor.webp"
+              alt="Artistic representation inspired by Waddesdon Manor and its formal gardens"
+              loading="lazy">
+            <div class="venue-image-copy">
+              <div class="label">Waddesdon Manor</div>
+              <h3>Rothschild heritage</h3>
+              <p>
+                A prestigious Buckinghamshire destination associated with
+                heritage, architecture, gardens and refined hospitality.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="illustration-note">
+          AI-generated artistic imagery used for presentation; not official venue photography.
         </div>
 
         <p class="reveal-note">
