@@ -208,7 +208,310 @@ footer{padding:34px 0;color:rgba(246,241,231,.48);text-align:center;font-size:14
       border-top:1px solid rgba(255,255,255,.07);
     }
 
-  </style>
+  
+.shipment-milestone{position:relative;overflow:hidden;padding:110px 0;background:radial-gradient(circle at 50% 35%,rgba(200,169,106,.09),transparent 38%),linear-gradient(180deg,#050605,#090a08 45%,#040504)}
+.shipment-milestone:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(200,169,106,.04) 49%,transparent 63%);transform:translateX(-100%);animation:shipAmbient 9s ease-in-out infinite}
+.shipment-heading{max-width:900px;margin:auto;text-align:center;padding:0 20px}
+.shipment-kicker{display:flex;justify-content:center;align-items:center;gap:12px;color:#c8a96a;font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-bottom:18px}
+.shipment-pulse{width:7px;height:7px;border-radius:50%;background:#c8a96a;animation:shipPulse 2s infinite}
+.shipment-heading h2{margin:0;font-family:"Playfair Display",Georgia,serif;font-size:clamp(42px,6vw,76px);font-weight:500;line-height:1.02;color:#f4efe5}
+.shipment-heading p{max-width:760px;margin:22px auto 0;color:rgba(244,239,229,.68);font-size:17px;line-height:1.8}
+.shipment-journey{width:min(680px,86%);margin:36px auto 42px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;color:rgba(244,239,229,.74);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.shipment-route{position:relative;height:1px;background:rgba(200,169,106,.2)}
+.shipment-route:before{content:"";position:absolute;inset:0;transform-origin:left;background:linear-gradient(90deg,#806a3d,#e1c77d,#806a3d);animation:shipRoute 3.2s ease-in-out infinite}
+.shipment-route:after{content:"✦";position:absolute;top:50%;left:0;transform:translate(-50%,-50%);color:#e1c77d;font-size:13px;animation:shipTravel 3.2s ease-in-out infinite}
+.shipment-frame{position:relative;width:min(1040px,92%);margin:auto;padding:1px;border-radius:32px;background:linear-gradient(135deg,rgba(225,199,125,.62),rgba(200,169,106,.08) 35%,rgba(225,199,125,.32));box-shadow:0 38px 120px rgba(0,0,0,.58)}
+.shipment-photo-wrap{position:relative;overflow:hidden;border-radius:31px;background:#050505}
+.shipment-photo-wrap:before{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.68) 100%)}
+.shipment-photo-wrap:after{content:"";position:absolute;z-index:3;top:-20%;bottom:-20%;width:18%;left:-28%;pointer-events:none;transform:skewX(-18deg);background:linear-gradient(90deg,transparent,rgba(225,199,125,.12),transparent);animation:shipSweep 7s ease-in-out infinite}
+.shipment-photo{width:100%;height:auto;max-height:820px;object-fit:contain;display:block;animation:shipBreath 14s ease-in-out infinite alternate}
+.shipment-badge{position:absolute;z-index:4;top:24px;left:24px;display:flex;align-items:center;gap:10px;padding:11px 15px;border:1px solid rgba(225,199,125,.38);border-radius:999px;background:rgba(4,5,4,.7);backdrop-filter:blur(12px);color:#e1c77d;font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.shipment-caption{position:absolute;z-index:4;left:30px;right:30px;bottom:28px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
+.shipment-caption strong{display:block;font-family:"Playfair Display",Georgia,serif;color:#f4efe5;font-size:clamp(24px,3.2vw,40px);font-weight:500}
+.shipment-caption span,.shipment-date{display:block;margin-top:8px;color:rgba(244,239,229,.68);font-size:12px;letter-spacing:.1em;line-height:1.55}
+.shipment-date{text-align:right;text-transform:uppercase;letter-spacing:.18em;color:#d4b86e;white-space:nowrap}
+@keyframes shipPulse{0%{box-shadow:0 0 0 0 rgba(200,169,106,.5)}70%{box-shadow:0 0 0 10px rgba(200,169,106,0)}100%{box-shadow:0 0 0 0 rgba(200,169,106,0)}}
+@keyframes shipRoute{0%{transform:scaleX(0);opacity:.35}55%,100%{transform:scaleX(1);opacity:1}}
+@keyframes shipTravel{0%{left:0;opacity:0}15%{opacity:1}75%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes shipSweep{0%,20%{left:-28%;opacity:0}35%{opacity:1}60%,100%{left:118%;opacity:0}}
+@keyframes shipBreath{from{transform:scale(1)}to{transform:scale(1.022)}}
+@keyframes shipAmbient{0%,15%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
+@media(max-width:700px){.shipment-milestone{padding:78px 0}.shipment-heading p{font-size:15px}.shipment-frame{width:calc(100% - 28px);border-radius:23px}.shipment-photo-wrap{border-radius:22px}.shipment-badge{top:14px;left:14px}.shipment-caption{left:18px;right:18px;bottom:18px;display:block}.shipment-date{text-align:left;margin-top:12px}}
+@media(prefers-reduced-motion:reduce){.shipment-milestone *,.shipment-milestone:before,.shipment-photo-wrap:after{animation:none!important}}
+
+
+.shipment-announcement{
+  position:relative;
+  overflow:hidden;
+  padding:105px 0;
+  background:
+    radial-gradient(circle at 50% 18%,rgba(200,169,106,.10),transparent 34%),
+    linear-gradient(180deg,#040504,#090a08 52%,#040504);
+}
+.shipment-announcement:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(110deg,transparent 30%,rgba(218,187,111,.035) 48%,transparent 66%);
+  transform:translateX(-110%);
+  animation:announcementGlow 10s ease-in-out infinite;
+}
+.shipment-announcement-head{
+  max-width:850px;
+  margin:0 auto 38px;
+  padding:0 20px;
+  text-align:center;
+}
+.shipment-announcement-kicker{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:11px;
+  margin-bottom:16px;
+  color:#c8a96a;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+}
+.shipment-announcement-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#d8ba70;
+  box-shadow:0 0 0 0 rgba(216,186,112,.48);
+  animation:announcementPulse 2.2s infinite;
+}
+.shipment-announcement-head h2{
+  margin:0;
+  color:#f4efe5;
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(42px,5.8vw,72px);
+  font-weight:500;
+  line-height:1.04;
+}
+.shipment-announcement-head p{
+  max-width:720px;
+  margin:20px auto 0;
+  color:rgba(244,239,229,.68);
+  font-size:16px;
+  line-height:1.8;
+}
+.shipment-announcement-frame{
+  position:relative;
+  width:min(1280px,94%);
+  margin:0 auto;
+  padding:1px;
+  overflow:hidden;
+  border-radius:30px;
+  background:linear-gradient(135deg,rgba(225,199,125,.65),rgba(225,199,125,.10) 34%,rgba(225,199,125,.36));
+  box-shadow:0 38px 120px rgba(0,0,0,.60);
+}
+.shipment-announcement-frame:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:30px;
+  box-shadow:inset 0 0 55px rgba(0,0,0,.18);
+}
+.shipment-announcement-frame img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:29px;
+  transform:scale(1.001);
+  transition:transform 1.4s cubic-bezier(.2,.7,.2,1);
+}
+.shipment-announcement-frame:hover img{transform:scale(1.012)}
+.shipment-announcement-foot{
+  width:min(620px,82%);
+  margin:28px auto 0;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:15px;
+  color:rgba(244,239,229,.55);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+.shipment-announcement-line{
+  height:1px;
+  background:linear-gradient(90deg,rgba(200,169,106,.2),#c8a96a,rgba(200,169,106,.2));
+  transform-origin:left;
+  animation:announcementLine 3.8s ease-in-out infinite;
+}
+@keyframes announcementPulse{
+  0%{box-shadow:0 0 0 0 rgba(216,186,112,.48)}
+  70%{box-shadow:0 0 0 10px rgba(216,186,112,0)}
+  100%{box-shadow:0 0 0 0 rgba(216,186,112,0)}
+}
+@keyframes announcementGlow{
+  0%,20%{transform:translateX(-110%)}
+  60%,100%{transform:translateX(110%)}
+}
+@keyframes announcementLine{
+  0%{transform:scaleX(.15);opacity:.3}
+  55%,100%{transform:scaleX(1);opacity:1}
+}
+@media(max-width:700px){
+  .shipment-announcement{padding:76px 0}
+  .shipment-announcement-head{margin-bottom:28px}
+  .shipment-announcement-head p{font-size:15px}
+  .shipment-announcement-frame{width:calc(100% - 24px);border-radius:20px}
+  .shipment-announcement-frame img,.shipment-announcement-frame:after{border-radius:19px}
+  .shipment-announcement-foot{width:calc(100% - 44px);font-size:9px;letter-spacing:.13em}
+}
+@media(prefers-reduced-motion:reduce){
+  .shipment-announcement:before,
+  .shipment-announcement-dot,
+  .shipment-announcement-line{animation:none!important}
+  .shipment-announcement-frame img{transition:none!important}
+}
+
+
+/* Refined first-shipment milestone — intentionally minimal surrounding copy */
+.shipment-refined{
+  position:relative;
+  overflow:hidden;
+  padding:92px 0 100px;
+  background:
+    radial-gradient(circle at 50% 30%,rgba(196,162,92,.075),transparent 40%),
+    linear-gradient(180deg,#040504,#070806 55%,#030403);
+}
+.shipment-refined:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(112deg,transparent 35%,rgba(220,192,125,.03) 49%,transparent 63%);
+  transform:translateX(-110%);
+  animation:refinedAmbient 11s ease-in-out infinite;
+}
+.shipment-refined-shell{
+  width:min(1380px,96%);
+  margin:0 auto;
+  position:relative;
+}
+.shipment-refined-status{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:11px;
+  margin:0 auto 25px;
+  color:#c8a96a;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+}
+.shipment-refined-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#d9bc73;
+  box-shadow:0 0 0 0 rgba(217,188,115,.45);
+  animation:refinedPulse 2.4s infinite;
+}
+.shipment-refined-frame{
+  position:relative;
+  margin:0;
+  padding:1px;
+  overflow:hidden;
+  border-radius:30px;
+  background:linear-gradient(135deg,rgba(224,196,126,.52),rgba(224,196,126,.07) 32%,rgba(224,196,126,.24));
+  box-shadow:0 42px 130px rgba(0,0,0,.64);
+}
+.shipment-refined-frame:before{
+  content:"";
+  position:absolute;
+  z-index:2;
+  inset:0;
+  pointer-events:none;
+  border-radius:30px;
+  box-shadow:inset 0 0 70px rgba(0,0,0,.15);
+}
+.shipment-refined-frame:after{
+  content:"";
+  position:absolute;
+  z-index:3;
+  top:-30%;bottom:-30%;
+  width:12%;
+  left:-20%;
+  pointer-events:none;
+  transform:skewX(-18deg);
+  background:linear-gradient(90deg,transparent,rgba(225,199,125,.07),transparent);
+  animation:refinedSweep 9s ease-in-out infinite;
+}
+.shipment-refined-frame img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:29px;
+  transform:scale(1.001);
+  transition:transform 1.6s cubic-bezier(.2,.7,.2,1);
+}
+.shipment-refined-frame:hover img{transform:scale(1.008)}
+.shipment-refined-route{
+  width:min(520px,80%);
+  margin:24px auto 0;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:14px;
+  color:rgba(244,239,229,.42);
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+.shipment-refined-line{
+  position:relative;
+  height:1px;
+  overflow:hidden;
+  background:rgba(200,169,106,.13);
+}
+.shipment-refined-line i{
+  position:absolute;
+  inset:0;
+  display:block;
+  transform-origin:left;
+  background:linear-gradient(90deg,transparent,#b99a59,transparent);
+  animation:refinedRoute 4.5s ease-in-out infinite;
+}
+@keyframes refinedPulse{
+  0%{box-shadow:0 0 0 0 rgba(217,188,115,.45)}
+  70%{box-shadow:0 0 0 9px rgba(217,188,115,0)}
+  100%{box-shadow:0 0 0 0 rgba(217,188,115,0)}
+}
+@keyframes refinedSweep{
+  0%,25%{left:-20%;opacity:0}
+  38%{opacity:.8}
+  58%,100%{left:115%;opacity:0}
+}
+@keyframes refinedRoute{
+  0%{transform:translateX(-100%);opacity:.2}
+  55%{opacity:1}
+  100%{transform:translateX(100%);opacity:.2}
+}
+@keyframes refinedAmbient{
+  0%,20%{transform:translateX(-110%)}
+  60%,100%{transform:translateX(110%)}
+}
+@media(max-width:700px){
+  .shipment-refined{padding:68px 0 76px}
+  .shipment-refined-shell{width:calc(100% - 20px)}
+  .shipment-refined-status{padding:0 12px;text-align:center;line-height:1.6;letter-spacing:.17em}
+  .shipment-refined-frame{border-radius:19px}
+  .shipment-refined-frame img,.shipment-refined-frame:before{border-radius:18px}
+  .shipment-refined-route{width:calc(100% - 32px);font-size:8px;letter-spacing:.14em}
+}
+@media(prefers-reduced-motion:reduce){
+  .shipment-refined:before,.shipment-refined-dot,
+  .shipment-refined-frame:after,.shipment-refined-line i{animation:none!important}
+  .shipment-refined-frame img{transition:none!important}
+}
+
+</style>
 
   <style>
     .preview-hero{
@@ -467,13 +770,14 @@ footer{padding:34px 0;color:rgba(246,241,231,.48);text-align:center;font-size:14
 <body>
   <header>
     <div class="container nav">
-      <a class="brand" href="/">
+      <a class="brand" href="/home/">
         <img src="/logo.png" alt="Kingsway Spirit Logo">
         <div class="brand-text">Kingsway Spirit</div>
       </a>
 
       <nav>
         <ul>
+          <li><a href="/home/">Home</a></li>
           <li><a href="/news/">News</a></li>
           <li><a href="/distilling-partner/">Sky Wave</a></li>
           <li><a href="/journey-to-india/">Journey</a></li>
@@ -518,6 +822,31 @@ footer{padding:34px 0;color:rgba(246,241,231,.48);text-align:center;font-size:14
       </div>
     </div>
   </section>
+
+
+
+<section class="shipment-refined" id="first-shipment" aria-label="First shipment to India milestone">
+  <div class="shipment-refined-shell">
+    <div class="shipment-refined-status">
+      <span class="shipment-refined-dot"></span>
+      <span>India Launch Milestone · September 2026</span>
+    </div>
+    <figure class="shipment-refined-frame">
+      <img
+        src="/images/first-shipment-refined.webp"
+        alt="First shipment to India milestone featuring the real shipment photograph and a refined Bicester-to-Mumbai route visual"
+        loading="eager">
+    </figure>
+    <div class="shipment-refined-route" aria-hidden="true">
+      <span>Bicester</span>
+      <span class="shipment-refined-line"><i></i></span>
+      <span>Mumbai</span>
+    </div>
+  </div>
+</section>
+
+
+
 
   <section class="channel-section">
     <div class="container">
