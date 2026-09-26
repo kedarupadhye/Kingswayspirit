@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>News & Milestones | Kingsway Spirit</title>
+  <meta
+    name="description"
+    content="News and milestones from Kingsway Spirit as we build a premium British spirits presence in India."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --gold:#c8a96a;
+      --gold-light:#dfc47d;
+      --cream:#f3eee4;
+      --muted:rgba(243,238,228,.66);
+      --soft:rgba(243,238,228,.42);
+      --line:rgba(200,169,106,.22);
+      --black:#020302;
+      --panel:#090b09;
+    }
+
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      background:
+        radial-gradient(
+          circle at 50% 0%,
+          rgba(200,169,106,.08),
+          transparent 27%
+        ),
+        #020302;
+      color:var(--cream);
+      font-family:Inter,Arial,sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    a{
+      color:inherit;
+    }
+
+    img{
+      max-width:100%;
+    }
+
+    .container{
+      width:min(1180px,calc(100% - 48px));
+      margin:0 auto;
+    }
+
+    /* HEADER */
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(2,3,2,.84);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(200,169,106,.12);
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      text-decoration:none;
+    }
+
+    .brand img{
+      width:48px;
+      height:48px;
+      object-fit:contain;
+      filter:drop-shadow(0 0 15px rgba(200,169,106,.16));
+    }
+
+    .brand-name{
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:19px;
+      letter-spacing:.08em;
+    }
+
+    .nav-links{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap:27px;
+      margin:0;
+      padding:0;
+    }
+
+    .nav-links a{
+      color:rgba(243,238,228,.68);
+      text-decoration:none;
+      text-transform:uppercase;
+      font-size:10px;
+      font-weight:500;
+      letter-spacing:.16em;
+      transition:.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{
+      color:var(--gold-light);
+    }
+
+    /* HERO */
+
+    .news-hero{
+      position:relative;
+      overflow:hidden;
+      padding:118px 0 88px;
+      text-align:center;
+    }
+
+    .news-hero::before{
+      content:"";
+      position:absolute;
+      width:560px;
+      height:560px;
+      left:50%;
+      top:-300px;
+      transform:translateX(-50%);
+      border-radius:50%;
+      background:rgba(200,169,106,.08);
+      filter:blur(70px);
+      pointer-events:none;
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:.3em;
+      font-size:10px;
+      font-weight:600;
+    }
+
+    .news-hero h1{
+      max-width:850px;
+      margin:20px auto 20px;
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:clamp(48px,7vw,88px);
+      line-height:.98;
+      font-weight:500;
+      letter-spacing:-.025em;
+    }
+
+    .news-hero p{
+      max-width:650px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.8;
+    }
+
+    .hero-line{
+      width:110px;
+      height:1px;
+      margin:35px auto 0;
+      background:linear-gradient(
+        90deg,
+        transparent,
+        var(--gold),
+        transparent
+      );
+    }
+
+    /* FEATURED STORY */
+
+    .featured{
+      padding:20px 0 115px;
+    }
+
+    .featured-label{
+      margin-bottom:20px;
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:.25em;
+      font-size:10px;
+      font-weight:600;
+    }
+
+    .story{
+      overflow:hidden;
+      border:1px solid rgba(200,169,106,.24);
+      border-radius:32px;
+      background:#070907;
+      box-shadow:0 35px 110px rgba(0,0,0,.48);
+    }
+
+    .story-image{
+      position:relative;
+      min-height:590px;
+      overflow:hidden;
+    }
+
+    .story-image img{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      transition:transform 1.5s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .story:hover .story-image img{
+      transform:scale(1.015);
+    }
+
+    .story-image::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(2,3,2,.90) 0%,
+          rgba(2,3,2,.67) 38%,
+          rgba(2,3,2,.17) 72%,
+          rgba(2,3,2,.25) 100%
+        ),
+        linear-gradient(
+          180deg,
+          transparent 45%,
+          rgba(2,3,2,.55) 100%
+        );
+    }
+
+    .story-copy{
+      position:absolute;
+      z-index:5;
+      left:clamp(30px,6vw,78px);
+      top:50%;
+      transform:translateY(-50%);
+      width:min(560px,72%);
+    }
+
+    .story-date{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      color:var(--gold-light);
+      text-transform:uppercase;
+      letter-spacing:.23em;
+      font-size:10px;
+      font-weight:600;
+    }
+
+    .story-date::before{
+      content:"";
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:var(--gold);
+      box-shadow:0 0 15px rgba(200,169,106,.5);
+    }
+
+    .story h2{
+      margin:19px 0 20px;
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:clamp(42px,5.5vw,70px);
+      line-height:1;
+      font-weight:500;
+      letter-spacing:-.025em;
+    }
+
+    .story-copy p{
+      max-width:520px;
+      margin:0;
+      color:rgba(243,238,228,.73);
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .story-link{
+      display:inline-flex;
+      align-items:center;
+      gap:13px;
+      margin-top:29px;
+      padding-bottom:7px;
+      border-bottom:1px solid rgba(200,169,106,.45);
+      color:var(--gold-light);
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:10px;
+      font-weight:600;
+    }
+
+    .story-link::after{
+      content:"→";
+      font-size:17px;
+      transition:transform .25s ease;
+    }
+
+    .story-link:hover::after{
+      transform:translateX(5px);
+    }
+
+    /* ROUTE */
+
+    .route{
+      position:absolute;
+      z-index:6;
+      right:clamp(30px,6vw,76px);
+      bottom:48px;
+      width:min(330px,31vw);
+    }
+
+    .route-labels{
+      display:flex;
+      justify-content:space-between;
+      color:rgba(243,238,228,.58);
+      text-transform:uppercase;
+      letter-spacing:.17em;
+      font-size:8px;
+      font-weight:600;
+    }
+
+    .route-line{
+      position:relative;
+      height:22px;
+      margin-top:8px;
+    }
+
+    .route-line::before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      top:10px;
+      height:1px;
+      background:linear-gradient(
+        90deg,
+        rgba(200,169,106,.18),
+        rgba(200,169,106,.75),
+        rgba(200,169,106,.18)
+      );
+    }
+
+    .route-dot{
+      position:absolute;
+      top:7px;
+      width:7px;
+      height:7px;
+      border-radius:50%;
+      background:var(--gold);
+      box-shadow:0 0 12px rgba(200,169,106,.45);
+    }
+
+    .route-dot.first{
+      left:0;
+    }
+
+    .route-dot.last{
+      right:0;
+    }
+
+    .route-marker{
+      position:absolute;
+      top:1px;
+      left:0;
+      color:var(--gold-light);
+      font-size:13px;
+      animation:travel 4s ease-in-out infinite;
+    }
+
+    @keyframes travel{
+      0%{
+        left:0;
+        opacity:0;
+      }
+
+      15%{
+        opacity:1;
+      }
+
+      82%{
+        opacity:1;
+      }
+
+      100%{
+        left:calc(100% - 13px);
+        opacity:0;
+      }
+    }
+
+    /* MILESTONES */
+
+    .milestones{
+      padding:110px 0;
+      border-top:1px solid rgba(200,169,106,.12);
+    }
+
+    .section-head{
+      max-width:720px;
+      margin-bottom:52px;
+    }
+
+    .section-head h2{
+      margin:15px 0 15px;
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:clamp(38px,5vw,58px);
+      font-weight:500;
+      line-height:1.05;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .milestone-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .milestone-card{
+      min-height:280px;
+      padding:34px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      border:1px solid rgba(200,169,106,.17);
+      border-radius:24px;
+      background:
+        radial-gradient(
+          circle at 100% 0,
+          rgba(200,169,106,.07),
+          transparent 37%
+        ),
+        rgba(9,11,9,.72);
+    }
+
+    .milestone-number{
+      color:rgba(200,169,106,.48);
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:46px;
+      line-height:1;
+    }
+
+    .milestone-card h3{
+      margin:0 0 12px;
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:27px;
+      font-weight:500;
+    }
+
+    .milestone-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.7;
+    }
+
+    .coming-soon{
+      margin-top:17px;
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      font-size:8px;
+      font-weight:600;
+    }
+
+    /* JOURNEY CTA */
+
+    .journey-cta{
+      padding:35px 0 120px;
+    }
+
+    .journey-box{
+      padding:70px 55px;
+      text-align:center;
+      border:1px solid rgba(200,169,106,.22);
+      border-radius:30px;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(200,169,106,.08),
+          transparent 48%
+        ),
+        #070907;
+    }
+
+    .journey-box h2{
+      max-width:720px;
+      margin:16px auto 18px;
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:clamp(38px,5vw,62px);
+      line-height:1.03;
+      font-weight:500;
+    }
+
+    .journey-box p{
+      max-width:610px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:13px;
+      margin-top:30px;
+      padding:15px 24px;
+      border:1px solid var(--gold);
+      border-radius:999px;
+      background:var(--gold);
+      color:#070807;
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      font-size:10px;
+      font-weight:600;
+      transition:.25s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+      filter:brightness(1.07);
+    }
+
+    /* FOOTER */
+
+    footer{
+      border-top:1px solid rgba(200,169,106,.12);
+      padding:40px 0;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:25px;
+      color:rgba(243,238,228,.38);
+      font-size:10px;
+      letter-spacing:.08em;
+    }
+
+    .footer-brand{
+      color:rgba(243,238,228,.68);
+      font-family:"Playfair Display",Georgia,serif;
+      font-size:16px;
+      letter-spacing:.08em;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+      .nav-links{
+        gap:16px;
+      }
+
+      .nav-links li:nth-child(3),
+      .nav-links li:nth-child(4){
+        display:none;
+      }
+
+      .milestone-grid{
+        grid-template-columns:1fr;
+      }
+
+      .story-image{
+        min-height:650px;
+      }
+
+      .route{
+        width:260px;
+      }
+    }
+
+    @media(max-width:650px){
+      .container{
+        width:min(100% - 28px,1180px);
+      }
+
+      .nav{
+        min-height:70px;
+      }
+
+      .brand img{
+        width:40px;
+        height:40px;
+      }
+
+      .brand-name{
+        font-size:16px;
+      }
+
+      .nav-links li:not(:first-child):not(:nth-child(2)){
+        display:none;
+      }
+
+      .nav-links{
+        gap:17px;
+      }
+
+      .news-hero{
+        padding:85px 0 65px;
+      }
+
+      .story{
+        border-radius:22px;
+      }
+
+      .story-image{
+        min-height:690px;
+      }
+
+      .story-image::after{
+        background:
+          linear-gradient(
+            180deg,
+            rgba(2,3,2,.15) 0%,
+            rgba(2,3,2,.48) 37%,
+            rgba(2,3,2,.96) 73%,
+            #020302 100%
+          );
+      }
+
+      .story-copy{
+        left:25px;
+        right:25px;
+        top:auto;
+        bottom:112px;
+        width:auto;
+        transform:none;
+      }
+
+      .story h2{
+        font-size:42px;
+      }
+
+      .route{
+        left:25px;
+        right:25px;
+        bottom:28px;
+        width:auto;
+      }
+
+      .milestones{
+        padding:80px 0;
+      }
+
+      .journey-box{
+        padding:55px 25px;
+      }
+
+      .footer-inner{
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      *,
+      *::before,
+      *::after{
+        animation:none !important;
+        transition:none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container nav">
+
+      <a class="brand" href="/" aria-label="Kingsway Spirit home">
+        <img src="/logo.png" alt="Kingsway Spirit">
+        <span class="brand-name">Kingsway Spirit</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a class="active" href="/news/">News</a></li>
+          <li><a href="/distilling-partner/">Sky Wave</a></li>
+          <li><a href="/journey-to-india/">Journey</a></li>
+          <li><a href="/coming-to-india/">Coming to India</a></li>
+          <li><a href="/founding-circle/">Founding Circle</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- NEWS HERO -->
+  <main>
+
+    <section class="news-hero">
+      <div class="container">
+
+        <div class="eyebrow">Kingsway Spirit</div>
+
+        <h1>News &amp; Milestones</h1>
+
+        <p>
+          Following the journey as British craftsmanship moves towards
+          a new chapter in India — one milestone at a time.
+        </p>
+
+        <div class="hero-line"></div>
+
+      </div>
+    </section>
+
+
+    <!-- FEATURED STORY -->
+    <section class="featured">
+      <div class="container">
+
+        <div class="featured-label">Latest Milestone</div>
+
+        <article class="story">
+
+          <div class="story-image">
+
+            <!-- Uses the shipment image already installed for the landing page -->
+            <img
+              src="/images/landing-first-shipment.webp"
+              alt="First commercial shipment for the Kingsway Spirit India journey departing the United Kingdom"
+            >
+
+            <div class="story-copy">
+
+              <div class="story-date">
+                September 2026
+              </div>
+
+              <h2>
+                The India Journey<br>
+                Has Begun
+              </h2>
+
+              <p>
+                An important milestone in the Kingsway Spirit journey.
+                SKY WAVE's first commercial shipment for India has begun
+                its journey from the United Kingdom.
+              </p>
+
+              <a class="story-link" href="/coming-to-india/">
+                Explore the Journey
+              </a>
+
+            </div>
+
+            <div class="route" aria-hidden="true">
+
+              <div class="route-labels">
+                <span>United Kingdom</span>
+                <span>India</span>
+              </div>
+
+              <div class="route-line">
+                <span class="route-dot first"></span>
+                <span class="route-marker">✦</span>
+                <span class="route-dot last"></span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- FUTURE MILESTONES -->
+    <section class="milestones">
+      <div class="container">
+
+        <div class="section-head">
+
+          <div class="eyebrow">The Story Continues</div>
+
+          <h2>Building the India Chapter</h2>
+
+          <p>
+            From the first shipment through arrival, market activation
+            and launch, this page will follow significant moments in the
+            Kingsway Spirit India journey.
+          </p>
+
+        </div>
+
+        <div class="milestone-grid">
+
+          <article class="milestone-card">
+
+            <div class="milestone-number">01</div>
+
+            <div>
+              <h3>First Shipment</h3>
+
+              <p>
+                The first commercial shipment begins its journey from
+                the United Kingdom to India.
+              </p>
+
+              <div class="coming-soon">September 2026 · Underway</div>
+            </div>
+
+          </article>
+
+
+          <article class="milestone-card">
+
+            <div class="milestone-number">02</div>
+
+            <div>
+              <h3>Arrival in India</h3>
+
+              <p>
+                The next chapter will mark the arrival of the first
+                commercial shipment in India.
+              </p>
+
+              <div class="coming-soon">Next Milestone</div>
+            </div>
+
+          </article>
+
+
+          <article class="milestone-card">
+
+            <div class="milestone-number">03</div>
+
+            <div>
+              <h3>India Launch</h3>
+
+              <p>
+                Follow the journey as Kingsway Spirit and SKY WAVE move
+                towards market activation and the next stage of the
+                India story.
+              </p>
+
+              <div class="coming-soon">Coming Soon</div>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="journey-cta">
+      <div class="container">
+
+        <div class="journey-box">
+
+          <div class="eyebrow">United Kingdom → India</div>
+
+          <h2>
+            Follow the Journey to India
+          </h2>
+
+          <p>
+            Discover the story behind the brand, its British provenance,
+            premium presence and the journey towards its India launch.
+          </p>
+
+          <a class="btn" href="/coming-to-india/">
+            Explore Coming to India →
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-inner">
+
+      <div class="footer-brand">
+        Kingsway Spirit
+      </div>
+
+      <div>
+        Premium British Craftsmanship · India
+      </div>
+
+      <div>
+        Please enjoy responsibly.
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
